@@ -12,10 +12,16 @@ body {
 /* Color Button Styles */
 .color-btn {
     transition: transform 0.2s, background-color 0.2s;
+    min-height: 44px; /* Better touch target on mobile */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
 }
 
 .color-btn:hover {
     transform: scale(1.02);
+}
+
+.color-btn:active {
+    transform: scale(0.98);
 }
 
 /* Diamond Plate Pattern */
@@ -42,5 +48,40 @@ body {
 
 #colorList::-webkit-scrollbar-thumb:hover {
     background: #94a3b8;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+    /* Better touch targets */
+    input, button, a {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Prevent text size adjustment on iOS */
+    input, textarea, select {
+        font-size: 16px;
+    }
+    
+    /* Improve scrolling on mobile */
+    #colorList {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Better spacing for mobile */
+    body {
+        padding: 0.5rem;
+    }
+    
+    /* Ensure Selected Color box doesn't overlap image on mobile */
+    #svgContainer {
+        padding-bottom: 5rem !important; /* Extra space for info box */
+    }
+    
+    /* Position info box with proper spacing on mobile */
+    section[aria-label="Color visualization"] > div:last-child {
+        bottom: 0.5rem;
+        left: 0.5rem;
+        right: 0.5rem;
+    }
 }
 
